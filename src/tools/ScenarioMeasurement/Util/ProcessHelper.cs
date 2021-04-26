@@ -242,6 +242,12 @@ namespace ScenarioMeasurement
                     };
                 }
                 Logger.Log("Starting process...");
+                Logger.Log("PSI File Name: " + psi.FileName);
+                Logger.Log("PSI Arguments: " + psi.Arguments);
+                Logger.Log("PSI WorkingDirectory: " + psi.WorkingDirectory);
+                Logger.Log("PSI UseShellExecute: " + psi.UseShellExecute);
+                Logger.Log("PSI RedirectStandardOutput: " + psi.RedirectStandardOutput);
+                Logger.Log("PSI RedirectStandardError: " + psi.RedirectStandardError);
                 process.Start();
                 Logger.Log("Process: " + process);
                 Logger.Log("Process ID: " + process.Id);
