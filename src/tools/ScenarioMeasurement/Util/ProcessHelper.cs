@@ -241,7 +241,10 @@ namespace ScenarioMeasurement
                         }
                     };
                 }
+                Logger.Log("Starting process...");
                 process.Start();
+                Logger.Log("Process: " + process);
+                Logger.Log("Process ID: " + process.Id);
                 int pid = process.Id;
                 if (!GuiApp)
                 {
