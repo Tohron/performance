@@ -15,7 +15,7 @@ namespace ScenarioMeasurement
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Counter> Parse(string mergeTraceFile, string processName, IList<int> pids, string commandLine)
+        public IEnumerable<Counter> Parse(string mergeTraceFile, string processName, IList<int> pids, string commandLine, Logger logger)
         {
             throw new System.NotImplementedException();
         }

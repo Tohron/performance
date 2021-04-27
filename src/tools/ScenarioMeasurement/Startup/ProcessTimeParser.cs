@@ -16,7 +16,7 @@ namespace ScenarioMeasurement
         {
         }
 
-        public IEnumerable<Counter> Parse(string mergeTraceFile, string processName, IList<int> pids, string commandLine)
+        public IEnumerable<Counter> Parse(string mergeTraceFile, string processName, IList<int> pids, string commandLine, Logger logger)
         {
             var results = new List<double>();
             double threadTime = 0;

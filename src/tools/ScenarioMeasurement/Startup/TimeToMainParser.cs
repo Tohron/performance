@@ -1,4 +1,5 @@
 ﻿using Microsoft.Diagnostics.Tracing;
+using Microsoft.Diagnostics.Tracing.Etlx;
 using Microsoft.Diagnostics.Tracing.Parsers;
 using Reporting;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace ScenarioMeasurement
             user.EnableUserProvider(TraceSessionManager.ClrKeyword.Startup);
         }
 
-        public IEnumerable<Counter> Parse(string mergeTraceFile, string processName, IList<int> pids, string commandLine)
+        public IEnumerable<Counter> Parse(string mergeTraceFile, string processName, IList<int> pids, string commandLine, Logger logger)
         {
             var results = new List<double>();
             double threadTime = 0;
@@ -66,6 +67,7 @@ namespace ScenarioMeasurement
                 ClrPrivateTraceEventParser clrpriv = new ClrPrivateTraceEventParser(source.Source);
                 clrpriv.StartupMainStart += evt =>
                 {
+                    logger.Log("PID: " + pid + ", Evt: " + evt + ", " + evt.Log());
                     if(pid.HasValue && ParserUtility.MatchSingleProcessID(evt, source, (int)pid))
                     {
                         results.Add(evt.TimeStampRelativeMSec - start);

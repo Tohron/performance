@@ -301,7 +301,7 @@ namespace ScenarioMeasurement
                         commandLine = commandLine + " " + appArgs;
                     }
                     logger.Log("Parsing with command line: " + commandLine);
-                    var counters = parser.Parse(traceFilePath, Path.GetFileNameWithoutExtension(appExe), pids, commandLine);
+                    var counters = parser.Parse(traceFilePath, Path.GetFileNameWithoutExtension(appExe), pids, commandLine, logger);
 
 
                     CreateTestReport(scenarioName, counters, reportJsonPath, logger);
@@ -501,7 +501,7 @@ namespace ScenarioMeasurement
             {
                 logger.Log("Counter Entry Name: " + c.Name);
                 logger.Log("---Metric Name: " + c.MetricName);
-                logger.Log("---Results Max: " + c.Results.Max());
+                logger.Log("---Results Max: " + c.Results.Max()); // ----------- Results is empty!
             }
             test.AddCounter(counters);
             reporter.AddTest(test);
