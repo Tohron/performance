@@ -32,9 +32,11 @@ namespace ScenarioMeasurement
 
                 source.Kernel.ProcessStart += evt =>
                 {
+                    logger.Log("PID(start): " + pid + ", Evt: " + evt + ", Evt. PID" + evt.ProcessID);
                     if (!pid.HasValue && ParserUtility.MatchProcessStart(evt, source, processName, pids, commandLine))
                     {
                         pid = evt.ProcessID;
+                        logger.Log("Set PID");
                         start = evt.TimeStampRelativeMSec;
                     }
                 };
