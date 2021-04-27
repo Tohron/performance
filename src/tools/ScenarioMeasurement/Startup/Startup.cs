@@ -493,6 +493,12 @@ namespace ScenarioMeasurement
             var test = new Test();
             test.Categories.Add("Startup");
             test.Name = scenarioName;
+            logger.Log("Logging counters...");
+            logger.Log("Counters ToString: " + counters);
+            foreach(Counter c in counters)
+            {
+                logger.Log("Counter Entry Name: " + c.Name + ", Results: " + c.Results);
+            }
             test.AddCounter(counters);
             reporter.AddTest(test);
             if (reporter.InLab && !String.IsNullOrEmpty(reportJsonPath))
