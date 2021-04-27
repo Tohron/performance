@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -299,6 +300,7 @@ namespace ScenarioMeasurement
                     {
                         commandLine = commandLine + " " + appArgs;
                     }
+                    logger.Log("Parsing with command line: " + commandLine);
                     var counters = parser.Parse(traceFilePath, Path.GetFileNameWithoutExtension(appExe), pids, commandLine);
 
 
@@ -497,7 +499,9 @@ namespace ScenarioMeasurement
             logger.Log("Counters ToString: " + counters);
             foreach(Counter c in counters)
             {
-                logger.Log("Counter Entry Name: " + c.Name + ", Results: " + c.Results);
+                logger.Log("Counter Entry Name: " + c.Name);
+                logger.Log("---Metric Name: " + c.MetricName);
+                logger.Log("---Results Max: " + c.Results.Max());
             }
             test.AddCounter(counters);
             reporter.AddTest(test);
