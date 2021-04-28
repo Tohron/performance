@@ -41,6 +41,7 @@ namespace ScenarioMeasurement
                     }
                 };
 
+                logger.Log("Logging Kernel status...");
                 source.LogKernelStatus(logger);
                 IKernelParser kParser = source.Kernel;
                 source.LogKernelStatus(logger);
@@ -86,6 +87,7 @@ namespace ScenarioMeasurement
                         }
                     }
                 };
+                logger.Log("Starting process...");
                 source.Process();
             }
 
