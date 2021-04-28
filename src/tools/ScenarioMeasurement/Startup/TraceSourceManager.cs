@@ -29,6 +29,11 @@ namespace ScenarioMeasurement
             }
         }
 
+        public void LogKernelStatus(Logger logger)
+        {
+            logger.Log("Kernel: " + _kernel);
+        }
+
         public TraceSourceManager(string fileName)
         {
             Source = TraceEventDispatcher.GetDispatcherFromFileName(fileName);

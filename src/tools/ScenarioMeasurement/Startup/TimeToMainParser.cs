@@ -41,6 +41,10 @@ namespace ScenarioMeasurement
                     }
                 };
 
+                source.LogKernelStatus(logger);
+                IKernelParser kParser = source.Kernel;
+                source.LogKernelStatus(logger);
+
                 if (source.IsWindows)
                 {
                     ((ETWTraceEventSource)source.Source).Kernel.ThreadCSwitch += evt =>
